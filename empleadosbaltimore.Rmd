@@ -1,5 +1,5 @@
 ---
-title: "empleados"
+title: "empleados españoles"
 output: html_document
 date: "2024-02-14"
 ---
@@ -14,10 +14,34 @@ rm(list = ls())
 
 # Importamos datos con Rbase
 ```{r}
-rutafichero <- "data/Baltimore_City_Employee_Salaries (2).csv"
+rutafichero <- "data/Baltimore_City_Employee_Salaries (4).csv"
 datosRBase <- read.csv(file = rutafichero)
 
 
 
+```
+
+#Importar datos con la libreria readr
+```{r}
+
+datoreadr <- read_csv("data/Baltimore_City_Employee_Salaries (4).csv", col_types = cols(hireDate = col_date(format = "%Y-%m-%d")))
+```
+
+#Importar con Rio
+```{r}
+library(rio)
+datoRIO <- import(file = "data/Baltimore_City_Employee_Salaries (4).csv")
+```
+
+#importar readlines (linea a linea)
+```{r}
+fichero <- "data/Baltimore_City_Employee_Salaries (4).csv"
+guess_encoding(file = fichero)
+f <- file(fichero, encoding = 'UTF-8')
+datosReadLines <- readLines(con = f)
+```
+
+```{r}
+guess_encoding("empleadosbaltimore.Rmd")
 ```
 
